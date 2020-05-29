@@ -4,6 +4,7 @@
 	"description": "Structural, syntax-aware search for PHP code",
 	"publisher": "quasilyte",
 	"version": "0.1.0",
+	"preview": true,
 	"author": {
 		"name": "Iskander (Alex) Sharipov",
 		"email": "quasilyte@gmail.com",
