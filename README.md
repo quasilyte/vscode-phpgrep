@@ -39,4 +39,4 @@ Running `if ($cond) $x; else $x` pattern that finds all if statements with dupli
 * [phpgrep](https://github.com/quasilyte/phpgrep) binary
 
 Optional/recommended:
-* [Output Colorizer](https://marketplace.visualstudio.com/items?itemName=IBM.output-colorizer) to make the output colorized.
+* [Output Colorizer](https://marketplace.visualstudio.com/items?itemName=IBM.output-colorizer) to make the output colorized
