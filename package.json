@@ -5,6 +5,7 @@
 	"publisher": "quasilyte",
 	"version": "0.1.0",
 	"preview": true,
+	"icon": "docs/logo.png",
 	"author": {
 		"name": "Iskander (Alex) Sharipov",
 		"email": "quasilyte@gmail.com",
