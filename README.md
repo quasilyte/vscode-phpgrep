@@ -6,15 +6,15 @@ Search for PHP code using AST patterns. Uses [github.com/quasilyte/phpgrep](http
 
 This extension exposes `phpgrep` search commands.
 
-<image src="docs/commands.jpg" title="Ctrl+Shift+P phpgrep">
+![](/docs/commands.jpg "Ctrl+Shift+P phpgrep")
 
 Every command creates a [search pattern](https://github.com/quasilyte/phpgrep/blob/master/pattern_language.md) prompt.
 
-<image src="docs/pattern.jpg" title="search pattern prompt">
+![](/docs/pattern.jpg "search pattern prompt")
   
 Search results are printed to the **output channel** named `phpgrep`.
 
-<image src="docs/output.jpg" title="phpgrep output channel">
+![](/docs/output.jpg "phpgrep output channel")
 
 If you're familiar with [structural search and replace (SSR)](https://www.jetbrains.com/help/idea/structural-search-and-replace.html) from
 the JetBrains IDEs, you can feel yourself at home. phpgrep patterns are slightly different, but the idea is the same.
@@ -23,11 +23,11 @@ the JetBrains IDEs, you can feel yourself at home. phpgrep patterns are slightly
 
 Running `$x ? $x : $y` pattern that finds all candidates for `?:` refactoring:
 
-![](docs/demo1.gif)
+![](/docs/demo1.gif)
 
 Running `if ($cond) $x; else $x` pattern that finds all if statements with duplicated then/else bodies:
 
-![](docs/demo2.gif)
+![](/docs/demo2.gif)
 
 ## Extension Settings
 
