@@ -1,3 +1,6 @@
+[![Version](https://vsmarketplacebadge.apphb.com/version-short/itemName=quasilyte.phpgrep.svg)](https://marketplace.visualstudio.com/items?itemName=itemName=quasilyte.phpgrep)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs-short/itemName=quasilyte.phpgrep.svg)](https://marketplace.visualstudio.com/items?itemName=itemName=quasilyte.phpgrep)
+
 # phpgrep for [Visual Studio Code](https://code.visualstudio.com/)
 
 Search for PHP code using AST patterns. Uses [github.com/quasilyte/phpgrep](https://github.com/quasilyte/phpgrep) tool under the hood.
