@@ -33,7 +33,6 @@ export function runSearch(opts: SearchOptions): Promise<void> {
         }
         args.push(opts.target);
         args.push(opts.pattern);
-        console.log(args);
         const phpgrep = child_process.spawn(phpgrepPath, args);
 
         outputChan.appendLine(`info: searching for ${opts.pattern} pattern...`);
