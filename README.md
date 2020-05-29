@@ -1,5 +1,5 @@
-[![Version](https://vsmarketplacebadge.apphb.com/version-short/itemName=quasilyte.phpgrep.svg)](https://marketplace.visualstudio.com/items?itemName=itemName=quasilyte.phpgrep)
-[![Installs](https://vsmarketplacebadge.apphb.com/installs-short/itemName=quasilyte.phpgrep.svg)](https://marketplace.visualstudio.com/items?itemName=itemName=quasilyte.phpgrep)
+[![Version](https://vsmarketplacebadge.apphb.com/version-short/itemName=quasilyte.phpgrep.svg)](https://marketplace.visualstudio.com/items?itemName=quasilyte.phpgrep)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs-short/itemName=quasilyte.phpgrep.svg)](https://marketplace.visualstudio.com/items?itemName=quasilyte.phpgrep)
 
 # phpgrep for [Visual Studio Code](https://code.visualstudio.com/)
 
