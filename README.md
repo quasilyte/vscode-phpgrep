@@ -1,4 +1,4 @@
-# phpgrep for VS Code
+# phpgrep for [Visual Studio Code](https://code.visualstudio.com/)
 
 Search for PHP code using AST patterns. Uses [github.com/quasilyte/phpgrep](https://github.com/quasilyte/phpgrep) tool under the hood.
 
