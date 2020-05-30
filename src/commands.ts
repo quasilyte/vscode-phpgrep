@@ -13,23 +13,24 @@ function tryToInstallPhpgrep() {
     }
     triedToInstallPhpgrep = true;
 
-    // TODO: handle installation on other platforms.
-    const os = process.platform;
-    if (os === 'linux') {
-        tryToInstallPhpgrepOnLinux();
-    }
-}
-
-function tryToInstallPhpgrepOnLinux() {
     if (process.arch !== 'x64') {
         return;
     }
-    vscode.window.showInformationMessage('Download and install phpgrep binary (linux/amd64)?', 'Yes', 'No').then((selected) => {
-        if (selected === 'No') {
-            return;
-        }
-        // TODO: download and install phpgrep.
-    });
+
+    let goos = process.platform.toString();
+    if (goos === 'win32') {
+        goos = 'windows';
+    }
+
+    if (['linux', 'darwin', 'windows'].includes(goos)) {
+        vscode.window.showInformationMessage('Download phpgrep from https://github.com/quasilyte/phpgrep/releases?', 'Yes', 'No').then(selected => {
+            if (selected !== 'Yes') {
+                return;
+            }
+            const releasePage = `https://github.com/quasilyte/phpgrep/releases/download/v0.7.0/phpgrep-0.7.0-${goos}-amd64.zip`;
+            vscode.env.openExternal(vscode.Uri.parse(releasePage));
+        });
+    }
 }
 
 async function runSearch(target: string) {
@@ -62,7 +63,7 @@ async function runSearch(target: string) {
     } catch (e) {
         console.error(e);
         if (e instanceof Error && e.message.includes('ENOENT')) {
-            vscode.window.showErrorMessage("Seems like phpgrep binary is not installed");
+            vscode.window.showErrorMessage(`${phpgrepPath} not found in PATH`);
             tryToInstallPhpgrep();
         }
     }
