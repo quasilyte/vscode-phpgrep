@@ -42,7 +42,7 @@ Some example search patterns:
 * `$_ ? $x : $x` - find ternary expressions with identical then/else expressions
 * `$_ == null` - find all `==` (non-strict) comparisons with `null`
 * `$x != $_ || $x != $y` - find || operators where comparison with `$y` may be redundant
-* `[${"*"}, $k => $_, ${"*"}, $k => $_, ${"*"}]` - find array literals with at least 1 duplicated key
+* `[${"*"}, $k => $_, ${"*"}, $k => $_, ${"*"}]` - find arrays with at least 1 duplicated key
 * `for ($_ == $_; $_; $_) $_` - find `for` loops where `==` is used instead of `=` inside init clause
 * `foo($_, ${"int"})` - find `foo` calls where the second argument is integer literal
 * `array_map($_, ${"func"})` - find potentially incorect arguments order for `array_map` calls
