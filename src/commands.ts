@@ -5,6 +5,32 @@ import * as path from 'path';
 // Used as the initial input value for the pattern prompt.
 // Updated after every search pattern prompt.
 var lastSearchPattern = '';
+var triedToInstallPhpgrep = false;
+
+function tryToInstallPhpgrep() {
+    if (triedToInstallPhpgrep) {
+        return;
+    }
+    triedToInstallPhpgrep = true;
+
+    // TODO: handle installation on other platforms.
+    const os = process.platform;
+    if (os === 'linux') {
+        tryToInstallPhpgrepOnLinux();
+    }
+}
+
+function tryToInstallPhpgrepOnLinux() {
+    if (process.arch !== 'x64') {
+        return;
+    }
+    vscode.window.showInformationMessage('Download and install phpgrep binary (linux/amd64)?', 'Yes', 'No').then((selected) => {
+        if (selected === 'No') {
+            return;
+        }
+        // TODO: download and install phpgrep.
+    });
+}
 
 async function runSearch(target: string) {
     const searchPattern = await vscode.window.showInputBox({
@@ -35,6 +61,10 @@ async function runSearch(target: string) {
         });
     } catch (e) {
         console.error(e);
+        if (e instanceof Error && e.message.includes('ENOENT')) {
+            vscode.window.showErrorMessage("Seems like phpgrep binary is not installed");
+            tryToInstallPhpgrep();
+        }
     }
 }
 
