@@ -7,7 +7,6 @@ import * as install from './install';
 // Updated after every search pattern prompt.
 var lastSearchPattern = '';
 
-
 async function runSearch(target: string) {
     let searchPattern = '';
     // Pattern source 1: cursor selection.
