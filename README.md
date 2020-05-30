@@ -5,6 +5,12 @@
 
 Search for PHP code using AST patterns. Uses [github.com/quasilyte/phpgrep](https://github.com/quasilyte/phpgrep) tool under the hood.
 
+## Features
+
+* Search PHP code using smart matching instead of regexps
+* AST-based replace for quick and precise refactoring (**to be implemented**)
+* Advanced search filters (**to be implemented**)
+
 ## Overview
 
 This extension exposes `phpgrep` search commands.
