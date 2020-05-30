@@ -3,7 +3,7 @@
 	"displayName": "phpgrep",
 	"description": "Structural, syntax-aware search for PHP code",
 	"publisher": "quasilyte",
-	"version": "0.1.3",
+	"version": "0.1.4",
 	"preview": true,
 	"icon": "docs/logo.png",
 	"license": "MIT",
