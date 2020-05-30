@@ -1,37 +1,12 @@
 import * as vscode from 'vscode';
-import * as phpgrep from './phpgrep';
 import * as path from 'path';
+import * as phpgrep from './phpgrep';
+import * as install from './install';
 
 // Used as the initial input value for the pattern prompt.
 // Updated after every search pattern prompt.
 var lastSearchPattern = '';
-var triedToInstallPhpgrep = false;
 
-function tryToInstallPhpgrep() {
-    if (triedToInstallPhpgrep) {
-        return;
-    }
-    triedToInstallPhpgrep = true;
-
-    if (process.arch !== 'x64') {
-        return;
-    }
-
-    let goos = process.platform.toString();
-    if (goos === 'win32') {
-        goos = 'windows';
-    }
-
-    if (['linux', 'darwin', 'windows'].includes(goos)) {
-        vscode.window.showInformationMessage('Download phpgrep from https://github.com/quasilyte/phpgrep/releases?', 'Yes', 'No').then(selected => {
-            if (selected !== 'Yes') {
-                return;
-            }
-            const releasePage = `https://github.com/quasilyte/phpgrep/releases/download/v0.7.0/phpgrep-0.7.0-${goos}-amd64.zip`;
-            vscode.env.openExternal(vscode.Uri.parse(releasePage));
-        });
-    }
-}
 
 async function runSearch(target: string) {
     let searchPattern = '';
@@ -85,7 +60,7 @@ async function runSearch(target: string) {
         console.error(e);
         if (e instanceof Error && e.message.includes('ENOENT')) {
             vscode.window.showErrorMessage(`${phpgrepPath} not found in PATH`);
-            tryToInstallPhpgrep();
+            install.downloadPhpgrep();
         }
     }
 }
