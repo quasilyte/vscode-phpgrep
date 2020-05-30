@@ -6,6 +6,7 @@
 	"version": "0.1.2",
 	"preview": true,
 	"icon": "docs/logo.png",
+	"license": "MIT",
 	"author": {
 		"name": "Iskander (Alex) Sharipov",
 		"email": "quasilyte@gmail.com",
@@ -21,6 +22,13 @@
 	"categories": [
 		"Programming Languages",
 		"Other"
+	],
+	"keywords": [
+		"php",
+		"code-search",
+		"grep",
+		"find",
+		"structural-search"
 	],
 	"activationEvents": [
 		"onCommand:phpgrep.searchFile",
