@@ -31,6 +31,8 @@ Instead of matching a literal variable, every `$<expr>` matches a certain class 
 
 Advanced queries may include special variable nodes: `foo(null, ${"*"})` finds all `foo` function calls where the first argument is `null` and all other arguments are ignored. Read [docs](https://github.com/quasilyte/phpgrep/blob/master/pattern_language.md) to learn all phpgrep tricks.
 
+> Reminder: `${"varname"}` is a valid PHP variable syntax and is identical to `$varname` with the exception that it allows chars that are not permitted in conventional syntax.
+
 If you're familiar with [structural search and replace (SSR)](https://www.jetbrains.com/help/idea/structural-search-and-replace.html) from
 the JetBrains IDEs, you can feel yourself at home. phpgrep patterns are slightly different, but the idea is the same.
 
