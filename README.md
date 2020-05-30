@@ -19,6 +19,12 @@ Search results are printed to the **output channel** named `phpgrep`.
 
 ![](/docs/output.jpg "phpgrep output channel")
 
+The pattern language is syntactically identical to PHP. Only variable nodes meaning is slightly different.
+
+Instead of matching a literal variable, every `$<expr>` matches a certain class of AST nodes. A simple variable, like `$x` would match any expression (or statement). If a single variable used more than once in a pattern, all occurences must match identical nodes. So, `$x=$x` finds all self-assignments.
+
+Advanced queries may include special variable nodes: `foo(null, ${"*"})` finds all `foo` function calls where the first argument is `null` and all other arguments are ignored. Read [docs](https://github.com/quasilyte/phpgrep/blob/master/pattern_language.md) to learn all phpgrep tricks.
+
 If you're familiar with [structural search and replace (SSR)](https://www.jetbrains.com/help/idea/structural-search-and-replace.html) from
 the JetBrains IDEs, you can feel yourself at home. phpgrep patterns are slightly different, but the idea is the same.
 
