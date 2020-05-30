@@ -34,16 +34,32 @@ function tryToInstallPhpgrep() {
 }
 
 async function runSearch(target: string) {
-    const searchPattern = await vscode.window.showInputBox({
-        value: lastSearchPattern,
-        valueSelection: [lastSearchPattern.length, lastSearchPattern.length],
-        password: false,
-        prompt: "Search pattern"
-    });
+    let searchPattern = '';
+    // Pattern source 1: cursor selection.
+    // Performs a "find similar" search.
+    if (vscode.window.activeTextEditor) {
+        const ed = vscode.window.activeTextEditor;
+        const selectionText = ed.document.getText(ed.selection);
+        if (selectionText) {
+            searchPattern = selectionText;
+        }
+    }
+    // Pattern source 2: direct user input.
+    if (!searchPattern) {
+        const userInput = await vscode.window.showInputBox({
+            value: lastSearchPattern,
+            valueSelection: [lastSearchPattern.length, lastSearchPattern.length],
+            password: false,
+            prompt: "Search pattern"
+        });
+        if (userInput) {
+            searchPattern = userInput;
+            lastSearchPattern = userInput;
+        }
+    }
     if (!searchPattern) {
         return;
     }
-    lastSearchPattern = searchPattern;
 
     const cfg = vscode.workspace.getConfiguration('phpgrep');
     const phpgrepPath = cfg.get<string>('binary');
@@ -52,6 +68,10 @@ async function runSearch(target: string) {
         return;
     }
     const multiline = !cfg.get<boolean>('singleline');
+    let limit = cfg.get<number>('limit');
+    if (limit === undefined) {
+        limit = 100;
+    }
 
     try {
         await phpgrep.runSearch({
@@ -59,6 +79,7 @@ async function runSearch(target: string) {
             pattern: searchPattern,
             binary: phpgrepPath,
             multiline: multiline,
+            limit: limit,
         });
     } catch (e) {
         console.error(e);

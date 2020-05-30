@@ -11,7 +11,7 @@ export interface SearchOptions {
     pattern: string;
 
     // Limit results to this many matches.
-    limit?: number;
+    limit: number;
 
     // phpgrep binary path.
     binary: string;
@@ -26,7 +26,7 @@ export function runSearch(opts: SearchOptions): Promise<void> {
 
         // Run phpgrep process.
         const args = [
-            '-limit', opts.limit ? `${opts.limit}` : '100',
+            '-limit', `${opts.limit}`,
         ];
         if (opts.multiline) {
             args.push('-m');
@@ -35,7 +35,7 @@ export function runSearch(opts: SearchOptions): Promise<void> {
         args.push(opts.pattern);
         const phpgrep = child_process.spawn(phpgrepPath, args);
 
-        outputChan.appendLine(`info: searching for ${opts.pattern} pattern...`);
+        outputChan.appendLine(`info: searching for \`${opts.pattern}\` pattern...`);
         
         // Add phpgrep output to the channel.
         phpgrep.stderr.on('data', (data) => {

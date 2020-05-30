@@ -51,6 +51,12 @@
 					"default": false,
 					"description": "print multiline results without line breaks",
 					"scope": "resource"
+				},
+				"phpgrep.limit": {
+					"type": "integer",
+					"default": 100,
+					"description": "limit to this many search results per query",
+					"scope": "resource"
 				}
 			}
 		},

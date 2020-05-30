@@ -8,6 +8,7 @@ Search for PHP code using AST patterns. Uses [github.com/quasilyte/phpgrep](http
 ## Features
 
 * Search PHP code using smart matching instead of regexps
+* Find similar code fragments
 * AST-based replace for quick and precise refactoring (**to be implemented**)
 * Advanced search filters (**to be implemented**)
 
@@ -46,6 +47,8 @@ Some example search patterns:
 * `foo($_, ${"int"})` - find `foo` calls where the second argument is integer literal
 * `array_map($_, ${"func"})` - find potentially incorect arguments order for `array_map` calls
 
+To run "find similar" query, run any main search command (e.g. `phpgrep.searchFile`) with non-empty selection. Selected text will be used as a search pattern. Note that multi-statement search is not implemented yet.
+
 If you're familiar with [structural search and replace (SSR)](https://www.jetbrains.com/help/idea/structural-search-and-replace.html) from
 the JetBrains IDEs, you can feel yourself at home. phpgrep patterns are slightly different, but the idea is the same.
 
@@ -63,6 +66,7 @@ Running `if ($cond) $x; else $x` pattern that finds all if statements with dupli
 
 * `phpgrep.binary`: [phpgrep](https://github.com/quasilyte/phpgrep) binary path (default `"phpgrep"`)
 * `phpgrep.singleline`: print multiline results without line breaks (default `false`)
+* `phpgrep.limit`: limit to this many search results per query (default `100`)
 
 ## Requirements
 
