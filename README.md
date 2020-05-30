@@ -27,11 +27,24 @@ Search results are printed to the **output channel** named `phpgrep`.
 
 The pattern language is syntactically identical to PHP. Only variable nodes meaning is slightly different.
 
-Instead of matching a literal variable, every `$<expr>` matches a certain class of AST nodes. A simple variable, like `$x` would match any expression (or statement). If a single variable used more than once in a pattern, all occurences must match identical nodes. So, `$x=$x` finds all self-assignments.
+Instead of matching a literal variable, every `$<expr>` matches a certain class of AST nodes. A simple variable, like `$x` would match any expression (or statement). If a single variable used more than once in a pattern, all occurences must match identical nodes. So, `$x=$x` finds all self-assignments. Use `$_` if you don't want to name a variable (repeated `$_` variables do not cause submatch comparison).
 
 Advanced queries may include special variable nodes: `foo(null, ${"*"})` finds all `foo` function calls where the first argument is `null` and all other arguments are ignored. Read [docs](https://github.com/quasilyte/phpgrep/blob/master/pattern_language.md) to learn all phpgrep tricks.
 
 > Reminder: `${"varname"}` is a valid PHP variable syntax and is identical to `$varname` with the exception that it allows chars that are not permitted in conventional syntax.
+
+Some example search patterns:
+
+* `@$_` - find all usages of error supress operator
+* `in_array($x, [$y])` - find `in_array` calls that can be replaced with `$x == $y`
+* `$x ? true : false` - find all ternary expressions that could be replaced by just `$x`
+* `$_ ? $x : $x` - find ternary expressions with identical then/else expressions
+* `$_ == null` - find all `==` (non-strict) comparisons with `null`
+* `$x != $_ || $x != $y` - find || operators where comparison with `$y` may be redundant
+* `[${"*"}, $k => $_, ${"*"}, $k => $_, ${"*"}]` - find array literals with at least 1 duplicated key
+* `for ($_ == $_; $_; $_) $_` - find `for` loops where `==` is used instead of `=` inside init clause
+* `foo($_, ${"int"})` - find `foo` calls where the second argument is integer literal
+* `array_map($_, ${"func"})` - find potentially incorect arguments order for `array_map` calls
 
 If you're familiar with [structural search and replace (SSR)](https://www.jetbrains.com/help/idea/structural-search-and-replace.html) from
 the JetBrains IDEs, you can feel yourself at home. phpgrep patterns are slightly different, but the idea is the same.
