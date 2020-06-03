@@ -24,11 +24,11 @@
 		"Other"
 	],
 	"keywords": [
-		"php",
-		"code-search",
 		"grep",
 		"find",
-		"structural-search"
+		"search",
+		"semantic",
+		"structural"
 	],
 	"activationEvents": [
 		"onCommand:phpgrep.searchFile",
