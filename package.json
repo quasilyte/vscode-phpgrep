@@ -1,6 +1,6 @@
 {
 	"name": "phpgrep",
-	"displayName": "phpgrep",
+	"displayName": "phpgrep (Semantic PHP code search)",
 	"description": "Structural, syntax-aware search for PHP code",
 	"publisher": "quasilyte",
 	"version": "0.1.7",
