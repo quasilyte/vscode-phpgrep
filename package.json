@@ -38,7 +38,7 @@
 	"main": "./out/extension.js",
 	"contributes": {
 		"configuration": {
-			"title": "PHP",
+			"title": "phpgrep",
 			"properties": {
 				"phpgrep.binary": {
 					"type": "string",
